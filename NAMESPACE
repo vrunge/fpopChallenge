@@ -1,0 +1,5 @@
+useDynLib(fpopChallenge, .registration = TRUE)
+
+export(fpopChallenge)
+
+importFrom(Rcpp, evalCpp)
