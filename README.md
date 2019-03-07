@@ -1,7 +1,7 @@
 # fpopChallenge
 Different implementations in C++ of the standard fpop algorithm
 
-The algorithm used as a starting point can be found in FPOP.pdf
+The algorithm used as a starting point can be found [here](/FPOP.pdf)
 
 devtools::install_github("vrunge/fpopChallenge")
 
