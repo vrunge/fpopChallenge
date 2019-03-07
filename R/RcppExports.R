@@ -5,3 +5,7 @@ fpopChallenge <- function(vectData, vectWeight, penalty) {
     .Call(`_fpopChallenge_fpopChallenge`, vectData, vectWeight, penalty)
 }
 
+fpopRunge <- function(vectData, vectWeight, penalty) {
+    .Call(`_fpopChallenge_fpopRunge`, vectData, vectWeight, penalty)
+}
+
