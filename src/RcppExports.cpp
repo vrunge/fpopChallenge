@@ -31,10 +31,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// fpopRomano
+List fpopRomano(std::vector<double> vectData, double penalty);
+RcppExport SEXP _fpopChallenge_fpopRomano(SEXP vectDataSEXP, SEXP penaltySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<double> >::type vectData(vectDataSEXP);
+    Rcpp::traits::input_parameter< double >::type penalty(penaltySEXP);
+    rcpp_result_gen = Rcpp::wrap(fpopRomano(vectData, penalty));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_fpopChallenge_fpopChallenge", (DL_FUNC) &_fpopChallenge_fpopChallenge, 3},
     {"_fpopChallenge_fpopRunge", (DL_FUNC) &_fpopChallenge_fpopRunge, 3},
+    {"_fpopChallenge_fpopRomano", (DL_FUNC) &_fpopChallenge_fpopRomano, 2},
     {NULL, NULL, 0}
 };
 

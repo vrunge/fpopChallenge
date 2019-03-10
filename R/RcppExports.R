@@ -9,3 +9,7 @@ fpopRunge <- function(vectData, vectWeight, penalty) {
     .Call(`_fpopChallenge_fpopRunge`, vectData, vectWeight, penalty)
 }
 
+fpopRomano <- function(vectData, penalty) {
+    .Call(`_fpopChallenge_fpopRomano`, vectData, penalty)
+}
+

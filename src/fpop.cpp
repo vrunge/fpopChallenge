@@ -4,8 +4,11 @@
 #include"Empty.h"
 
 #include"Omega.h"
+#include"fpopgaeta.h"
 
 using namespace Rcpp;
+using namespace std;
+
 
 // [[Rcpp::export]]
 List fpopChallenge(Rcpp::NumericVector vectData, Rcpp::NumericVector vectWeight, double penalty)
@@ -43,6 +46,20 @@ List fpopRunge(Rcpp::NumericVector vectData, Rcpp::NumericVector vectWeight, dou
   return res;
 }
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// [[Rcpp::export]]
+List fpopRomano(std::vector<double> vectData, double penalty)
+{
+  
+  /// RETURN
+  List res = List::create(
+    _["changepoints"] = FPOPgaeta(vectData, penalty)
+  );
+  
+  return res;
+}
 
 
 

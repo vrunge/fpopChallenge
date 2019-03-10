@@ -2,7 +2,7 @@ Package: fpopChallenge
 Type: Package
 Title: Different implementations of the fpop algorithm
 Version: 0.1.2
-Author: Vincent Runge
+Author: Vincent Runge, Gaetano Romano
 Maintainer: Vincent Runge <vincent.runge@univ-evry.fr>
 Description: challenge different implementations of the fpop algorithm
 License: GPL-3
