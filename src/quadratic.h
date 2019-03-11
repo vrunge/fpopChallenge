@@ -1,11 +1,21 @@
+
+#ifndef ___QUADRATIC_H___
+#define ___QUADRATIC_H___
+
+#include <tuple>
+#include <vector>
+
 typedef std::tuple<int, double, double, double, double, double> quad;
-int tau(const quad &q);
-double l(const quad &q);
-double u(const quad &q);
-double a(const quad &q);
-double b(const quad &q);
-double c(const quad &q);
-quad update(const quad& q, const double& yi);
-std::tuple<double, double> getminimum(const quad& q);
-std::tuple<double, double> getintersections(const quad& q, const double& lc);
-void print_costf (std::vector<quad>& costS);
+
+int tau(const quad&);
+double l(const quad&);
+double u(const quad&);
+double a(const quad&);
+double b(const quad&);
+double c(const quad&);
+quad update(const quad&, const double&);
+std::tuple<double, double> getminimum(const quad& );
+std::tuple<double, double> getintersections(const quad&, const double&);
+void print_costf (std::vector<quad>&);
+
+#endif

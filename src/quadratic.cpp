@@ -5,13 +5,14 @@ In this file the quadratic and the operations necessary to it are defined
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include "quadratic.h"
 using namespace std;
 
 //#define const double infinity =  1.0/0.0;
 
 // this quadratic polynomial is defined in the following way:
 //                 tau, from l, to u,   a X^2,  b X,    c
-typedef std::tuple<int, double, double, double, double, double> quad;
+//typedef std::tuple<int, double, double, double, double, double> quad;
 
 // to build the quadratic simpy do quad q(0, 1, 2, 3, 4, 5)
 
