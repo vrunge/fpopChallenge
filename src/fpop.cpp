@@ -52,14 +52,11 @@ List fpopRunge(Rcpp::NumericVector vectData, Rcpp::NumericVector vectWeight, dou
 // [[Rcpp::export]]
 List fpopRomano(std::vector<double> vectData, double penalty)
 {
-  
+
   /// RETURN
   List res = List::create(
     _["changepoints"] = FPOPgaeta(vectData, penalty)
   );
-  
+
   return res;
 }
-
-
-
