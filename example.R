@@ -11,7 +11,7 @@ y <- c(rep(0, 10),
 beta = 2 * (log(length(y)))
 
 
-fpopRunge(vectData = y, vectWeight = 1.0, penalty = beta)
+fpopRunge(vectData = y, penalty = beta)
 
 fpopRomano(vectData = y, penalty = beta)
 

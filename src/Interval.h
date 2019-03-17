@@ -15,11 +15,10 @@ class Interval
     double getb() const;
 
     bool isEmpty() const;
-    bool isInside(double x) const;
+    bool isIncluded(Interval const& inter) const;
+    bool isEqual(Interval const& inter) const;
 
-    void intersection(Interval const& inter);
-
-    double internPoint() const;
+    void intersection(Interval const& intervalInterRoots, int& type);
 
     void show() const;
 

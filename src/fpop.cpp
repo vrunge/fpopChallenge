@@ -31,10 +31,10 @@ List fpopChallenge(Rcpp::NumericVector vectData, Rcpp::NumericVector vectWeight,
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // [[Rcpp::export]]
-List fpopRunge(Rcpp::NumericVector vectData, Rcpp::NumericVector vectWeight, double penalty)
+List fpopRunge(std::vector<double> vectData, double penalty)
 {
-  Omega omega = Omega();
-  omega.algo(vectData, vectWeight, penalty);
+  Omega omega = Omega(penalty);
+  omega.algo(vectData);
 
   /// RETURN
   List res = List::create(

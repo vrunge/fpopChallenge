@@ -10,16 +10,16 @@ class Track
 
     double getMinimum() const;
     double getArgminimum() const;
-    int getLabel() const;
+    int getNbSteps() const;
 
     void setMinimum(double mini);
     void setArgminimum(double argmini);
-    void setLabel(int newlabel);
+    void setNbSteps(int newNbSteps);
 
   private:
     double minimum;
     double argminimum;
-    int label;
+    int nbSteps;
 };
 
 #endif // TRACK_H

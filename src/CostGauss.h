@@ -15,7 +15,7 @@ class CostGauss
 {
   public:
     CostGauss();
-    CostGauss(double y, double w);
+    CostGauss(double y);
 
 
     double getM_A() const;
@@ -27,8 +27,7 @@ class CostGauss
 
     double point_eval(double number) const;
 
-    Interval intervalInterRoots() const;
-    Interval intervalMinLess(double input, double bound, bool constPiece) const;
+    Interval intervalInterRoots(double level);
 
     int sign_Q2_Minus_Q1(CostGauss const& cost_Q2, double leftBound) const;
 

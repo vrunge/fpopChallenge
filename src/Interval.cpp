@@ -11,32 +11,28 @@ double Interval::geta() const{return(m_a);}
 double Interval::getb() const{return(m_b);}
 
 bool Interval::isEmpty() const {return(m_a >= m_b);}
-bool Interval::isInside(double x) const {return((m_a <= x) & (x <= m_b));}
+bool Interval::isIncluded(Interval const& inter) const {return((inter.m_a >= m_a) & (inter.m_b <= m_b));}
 
-void Interval::intersection(Interval const& inter)
+bool Interval::isEqual(Interval const& inter) const {return((inter.m_a == m_a) & (inter.m_b == m_b));}
+
+
+void Interval::intersection(Interval const& intervalInterRoots, int& type)
 {
+  type = -1;
+  //type = -1 => intersection = empty or a point
+  //type = 0 => intersection = no change
+  //type = 1 => intersection = change the left bound
+  //type = 2 => intersection = change the right bound
+  //type = 3 => intersection = change the two bounds
 
-  if((inter.m_a <= m_b) && (m_a <= inter.m_b))
+  if((intervalInterRoots.m_a < m_b) && (m_a < intervalInterRoots.m_b))
   {
-    m_a = std::max(m_a,inter.m_a);
-    m_b = std::min(m_b,inter.m_b);
-  }
-  else
-  {
-    m_a = INFINITY;
-    m_b = INFINITY;
+    type = 0;
+    if(intervalInterRoots.m_a > m_a){type = type + 1; m_a = intervalInterRoots.m_a;}
+    if(intervalInterRoots.m_b < m_b){type = type + 2; m_b = intervalInterRoots.m_b;}
   }
 }
 
-
-double Interval::internPoint() const
-{
-  double thePoint = INFINITY;
-  if((m_a == -INFINITY) && (m_b < INFINITY)){thePoint = m_b - 1;}
-  if((-INFINITY < m_a) && (m_b == INFINITY)){thePoint = m_a + 1;}
-  if((-INFINITY < m_a) && (m_b < INFINITY)){thePoint = (m_a + 2*m_b)/3;}
-  return(thePoint);
-}
 
 
 void Interval::show() const
