@@ -4,7 +4,7 @@ library(fpopChallenge)
 library(fpop)
 
 n <- 10^6
-beta = 2 * (log(length(n)))
+beta = 2 * log(n)
 s1 <- NULL
 s2 <- NULL
 s3 <- NULL
