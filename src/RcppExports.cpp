@@ -6,15 +6,14 @@
 using namespace Rcpp;
 
 // fpopChallenge
-List fpopChallenge(Rcpp::NumericVector vectData, Rcpp::NumericVector vectWeight, double penalty);
-RcppExport SEXP _fpopChallenge_fpopChallenge(SEXP vectDataSEXP, SEXP vectWeightSEXP, SEXP penaltySEXP) {
+List fpopChallenge(std::vector<double> vectData, double penalty);
+RcppExport SEXP _fpopChallenge_fpopChallenge(SEXP vectDataSEXP, SEXP penaltySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type vectData(vectDataSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type vectWeight(vectWeightSEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type vectData(vectDataSEXP);
     Rcpp::traits::input_parameter< double >::type penalty(penaltySEXP);
-    rcpp_result_gen = Rcpp::wrap(fpopChallenge(vectData, vectWeight, penalty));
+    rcpp_result_gen = Rcpp::wrap(fpopChallenge(vectData, penalty));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -45,7 +44,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_fpopChallenge_fpopChallenge", (DL_FUNC) &_fpopChallenge_fpopChallenge, 3},
+    {"_fpopChallenge_fpopChallenge", (DL_FUNC) &_fpopChallenge_fpopChallenge, 2},
     {"_fpopChallenge_fpopRunge", (DL_FUNC) &_fpopChallenge_fpopRunge, 3},
     {"_fpopChallenge_fpopRomano", (DL_FUNC) &_fpopChallenge_fpopRomano, 2},
     {NULL, NULL, 0}

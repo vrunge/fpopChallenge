@@ -2,7 +2,7 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 fpopChallenge <- function(vectData, penalty) {
-  .Call(`_fpopChallenge_fpopChallenge`, vectData, penalty)
+    .Call(`_fpopChallenge_fpopChallenge`, vectData, penalty)
 }
 
 fpopRunge <- function(vectData, penalty, algoType = 1L) {
