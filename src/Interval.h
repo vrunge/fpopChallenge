@@ -13,11 +13,6 @@ class Interval
     void setb(double b);
     double geta() const;
     double getb() const;
-
-    bool isEmpty() const;
-    bool isIncluded(Interval const& inter) const;
-    bool isEqual(Interval const& inter) const;
-
     void intersection(Interval const& intervalInterRoots, int& type);
 
     void show() const;

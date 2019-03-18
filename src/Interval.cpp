@@ -10,12 +10,6 @@ void Interval::setb(double b){m_b = b;}
 double Interval::geta() const{return(m_a);}
 double Interval::getb() const{return(m_b);}
 
-bool Interval::isEmpty() const {return(m_a >= m_b);}
-bool Interval::isIncluded(Interval const& inter) const {return((inter.m_a >= m_a) & (inter.m_b <= m_b));}
-
-bool Interval::isEqual(Interval const& inter) const {return((inter.m_a == m_a) & (inter.m_b == m_b));}
-
-
 void Interval::intersection(Interval const& intervalInterRoots, int& type)
 {
   type = -1;

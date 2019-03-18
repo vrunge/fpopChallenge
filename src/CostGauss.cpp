@@ -23,35 +23,13 @@ double CostGauss::getConstant() const {return(constant);}
 
 double CostGauss::minimum() const
 {
-  double minimum = constant;
-  if(m_A > 0){minimum = -(m_B*m_B/(4*m_A)) + constant;}
-
-  return(minimum);
+  return(-(m_B*m_B/(4*m_A)) + constant);
 }
 
 double CostGauss::arg_minimum() const
 {
-  double argmin = INFINITY;
-  if(m_A == 0)
-  {
-    ///if(m_B<=0){argmin = INFINITY;}
-    if(m_B > 0){argmin = -INFINITY;}
-  }
-  else
-  {
-    argmin = -m_B/(2*m_A);
-  }
-
-  return(argmin);
+  return(-m_B/(2*m_A));
 }
-/// ARGMIN of a constant = + INFINITY
-
-
-//####### point_eval #######////####### point_eval #######////####### point_eval #######//
-//####### point_eval #######////####### point_eval #######////####### point_eval #######//
-
-double CostGauss::point_eval(double number) const {return((m_A*number*number) + (m_B*number) + constant);}
-
 
 //####### comparisons #######////####### comparisons #######////####### comparisons #######//
 //####### comparisons #######////####### comparisons #######////####### comparisons #######//
@@ -79,7 +57,6 @@ Interval CostGauss::intervalInterRoots(double level)
 //####### operations #######////####### operations #######////####### operations #######//
 
 /// m_A*THETA^2 + m_B*THETA + constant
-/// pt.w*(THETA^2 - 2*pt.y*THETA + pt.y*pt.y)
 
 void CostGauss::operator+=(CostGauss const& cost)
 {
@@ -90,43 +67,6 @@ void CostGauss::operator+=(CostGauss const& cost)
 
 void CostGauss::operator+=(double number)
 {constant = constant + number;}
-
-//bool operator==(CostGauss const& cost1, CostGauss const& cost2)
-//{
-//  if (cost1.getM_A() == cost2.getM_A() && cost1.getM_B() == cost2.getM_B() && cost1.getConstant() == cost2.getConstant())
-//    return true;
-//  else
-//    return false;
-//}
-
-
-//####### minus #######////####### minus #######////####### minus #######//
-//####### minus #######////####### minus #######////####### minus #######//
-
-
-CostGauss CostGauss::minus(CostGauss const& mycost)
-{
-  CostGauss gaussNew = CostGauss();
-  gaussNew.m_A = m_A - mycost.getM_A();
-  gaussNew.m_B = m_B - mycost.getM_B();
-  gaussNew.constant = constant - mycost.getConstant();
-
-  return(gaussNew);
-}
-
-
-
-
-//####### isEqual #######////####### isEqual #######////####### isEqual #######//
-//####### isEqual #######////####### isEqual #######////####### isEqual #######//
-
-bool CostGauss::isEqual(CostGauss const& mycost) const
-{
-  bool res = false;
-  res = (mycost.getM_A() == m_A)&&(mycost.getM_B() == m_B)&&(mycost.getConstant() == constant);
-  return(res);
-}
-
 
 
 ////////////////////////////////////////////////////////////////////////////////////

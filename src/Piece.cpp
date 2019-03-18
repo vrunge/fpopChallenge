@@ -46,6 +46,7 @@ void Piece::addConstant(double myconstant)
 {
   this -> getRefCost() += myconstant;
 }
+
 //####### addDataPoint #######////####### addDataPoint #######////####### addDataPoint #######//
 //####### addDataPoint #######////####### addDataPoint #######////####### addDataPoint #######//
 
