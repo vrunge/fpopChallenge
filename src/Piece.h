@@ -23,6 +23,7 @@ class Piece
     void addConstant(double myconstant);
     void addDataPoint(double y, Track& track);
     Piece* cut(double level);
+    Piece* cut2(double level);
 
     void show();
 

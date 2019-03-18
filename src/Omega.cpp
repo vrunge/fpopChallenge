@@ -57,6 +57,11 @@ void Omega::algo(std::vector< double > vectData)
 
   globalCost = track.getMinimum() - penalty;
 
+  ///backtracking
+  for(unsigned int i = 0; i < n; i++){std::cout << chpts[i] << " & ";}
+  std::cout << std::endl;
+  for(unsigned int i = 0; i < n; i++){std::cout << ms[i] << " & ";}
+  std::cout << std::endl;
 
   ///backtracking
   int tau = n - 1;
@@ -77,4 +82,54 @@ void Omega::algo(std::vector< double > vectData)
 
 
 
+
+//####### algo #######////####### algo #######////####### algo #######//
+//####### algo #######////####### algo #######////####### algo #######//
+
+
+void Omega::algo2(std::vector< double > vectData)
+{
+  int n = vectData.size();
+
+  ///INITIALIZATION
+  Track track = Track();
+  track.setMinimum(0);
+  int* chpts = new int[n]; ///vector of changepoints build by fpop
+  double* ms = new double[n]; ///vector of means build by fpop
+
+  functionalCost -> show();
+
+  for(unsigned int i = 0; i < n; i++)
+  {
+    functionalCost = functionalCost -> cut2(track.getMinimum() + penalty);
+    functionalCost -> addDataPoint(vectData[i], track); /// + update track
+
+    ///
+    chpts[i] = i - track.getNbSteps();
+    ms[i] = track.getArgminimum();
+  }
+
+  globalCost = track.getMinimum() - penalty;
+
+  ///backtracking
+  for(unsigned int i = 0; i < n; i++){std::cout << chpts[i] << " & ";}
+  std::cout << std::endl;
+  for(unsigned int i = 0; i < n; i++){std::cout << ms[i] << " & ";}
+  std::cout << std::endl;
+
+  ///backtracking
+  int tau = n - 1;
+
+  while(tau != -1)
+  {
+    changepoints.push_back(tau + 1);
+    means.push_back(ms[tau]);
+    tau = chpts[tau];
+  }
+
+  std::reverse(changepoints.begin(), changepoints.end());
+  std::reverse(means.begin(), means.end());
+
+
+}
 

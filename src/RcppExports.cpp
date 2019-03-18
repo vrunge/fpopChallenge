@@ -19,15 +19,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // fpopRunge
-List fpopRunge(Rcpp::NumericVector vectData, Rcpp::NumericVector vectWeight, double penalty);
-RcppExport SEXP _fpopChallenge_fpopRunge(SEXP vectDataSEXP, SEXP vectWeightSEXP, SEXP penaltySEXP) {
+List fpopRunge(std::vector<double> vectData, double penalty, int algoType);
+RcppExport SEXP _fpopChallenge_fpopRunge(SEXP vectDataSEXP, SEXP penaltySEXP, SEXP algoTypeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type vectData(vectDataSEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type vectWeight(vectWeightSEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type vectData(vectDataSEXP);
     Rcpp::traits::input_parameter< double >::type penalty(penaltySEXP);
-    rcpp_result_gen = Rcpp::wrap(fpopRunge(vectData, vectWeight, penalty));
+    Rcpp::traits::input_parameter< int >::type algoType(algoTypeSEXP);
+    rcpp_result_gen = Rcpp::wrap(fpopRunge(vectData, penalty, algoType));
     return rcpp_result_gen;
 END_RCPP
 }

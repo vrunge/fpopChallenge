@@ -87,6 +87,7 @@ Piece* Piece::cut(double level)
 
   /// intervals
   Interval interRoots = Interval();
+  Interval saveInterval;
 
   //INITIALIZATION of FirstPiece
   Piece* FirstPiece = new Piece();
@@ -97,44 +98,133 @@ Piece* Piece::cut(double level)
 
   while(tmp -> nxt != NULL)
   {
-    interRoots = tmp -> nxt -> m_cost.intervalInterRoots(level);
+    saveInterval = tmp -> nxt -> m_interval;
     tmp -> nxt -> m_interval.intersection(interRoots, type);
 
+    if(type != 0)
+    {
+      tmp -> nxt -> m_interval = saveInterval;
+      interRoots = tmp -> nxt -> m_cost.intervalInterRoots(level); //recompute interRoots
+      tmp -> nxt -> m_interval.intersection(interRoots, type);
+    }
 
-    if(type == -1)
+    switch(type)
+    {
+    case -1:
     {
       ToDeletePiece = tmp -> nxt;
       tmp -> nxt = ToDeletePiece -> nxt;
       ToDeletePiece -> nxt = NULL;
       delete(ToDeletePiece);
+      break;
     }
-    if(type == 0)
-    {
+
+    case 0:
+      {
       tmp = tmp -> nxt;
-    }
-    if(type == 1)
-    {
+      break;
+      }
+
+    case 1:
       tmp -> m_interval.setb(interRoots.geta());
       tmp = tmp -> nxt;
-    }
-    if(type == 2)
-    {
-      Piece* newConstPiece = new Piece();
-      newConstPiece -> addConstant(level);
-      newConstPiece -> m_interval.seta(interRoots.getb());
-      newConstPiece -> nxt = tmp -> nxt -> nxt;
-      tmp -> nxt -> nxt = newConstPiece;
-      tmp = newConstPiece;
-    }
-    if(type == 3)
-    {
+      break;
+
+    case 2:
+      {
+      Piece* newConstPiece2 = new Piece();
+      newConstPiece2 -> addConstant(level);
+      newConstPiece2 -> m_interval.seta(interRoots.getb());
+      newConstPiece2 -> nxt = tmp -> nxt -> nxt;
+      tmp -> nxt -> nxt = newConstPiece2;
+      tmp = newConstPiece2;
+      break;
+      }
+    case 3:
+      {
       tmp -> m_interval.setb(interRoots.geta());
-      Piece* newConstPiece = new Piece();
-      newConstPiece -> addConstant(level);
-      newConstPiece -> m_interval.seta(interRoots.getb());
-      newConstPiece -> nxt = tmp -> nxt -> nxt;
-      tmp -> nxt -> nxt = newConstPiece;
-      tmp = newConstPiece;
+      Piece* newConstPiece3 = new Piece();
+      newConstPiece3 -> addConstant(level);
+      newConstPiece3 -> m_interval.seta(interRoots.getb());
+      newConstPiece3 -> nxt = tmp -> nxt -> nxt;
+      tmp -> nxt -> nxt = newConstPiece3;
+      tmp = newConstPiece3;
+      break;
+      }
+    }
+  }
+  return(FirstPiece);
+}
+
+
+
+//####### cut2 #######////####### cut2 #######////####### cut2 #######//
+//####### cut2 #######////####### cut2 #######////####### cut2 #######//
+
+Piece* Piece::cut2(double level)
+{
+  Piece* tmp = this;
+  Piece* ToDeletePiece = NULL;
+  int type;
+
+  /// intervals
+  Interval interRoots = Interval();
+
+  //INITIALIZATION of FirstPiece
+  Piece* FirstPiece = new Piece();
+  FirstPiece -> addConstant(level);
+  FirstPiece -> m_interval.seta(-INFINITY);
+  FirstPiece -> nxt = tmp;
+  tmp = FirstPiece;
+
+  while(tmp -> nxt != NULL)
+  {
+    interRoots = tmp -> nxt -> m_cost.intervalInterRoots(level); //recompute interRoots
+    tmp -> nxt -> m_interval.intersection(interRoots, type);
+
+    switch(type)
+    {
+    case -1:
+    {
+      ToDeletePiece = tmp -> nxt;
+      tmp -> nxt = ToDeletePiece -> nxt;
+      ToDeletePiece -> nxt = NULL;
+      delete(ToDeletePiece);
+      break;
+    }
+
+    case 0:
+    {
+      tmp = tmp -> nxt;
+      break;
+    }
+
+    case 1:
+      tmp -> m_interval.setb(interRoots.geta());
+      tmp = tmp -> nxt;
+      break;
+
+    case 2:
+      {
+        Piece* newConstPiece2 = new Piece();
+        newConstPiece2 -> addConstant(level);
+        newConstPiece2 -> m_interval.seta(interRoots.getb());
+        newConstPiece2 -> nxt = tmp -> nxt -> nxt;
+        tmp -> nxt -> nxt = newConstPiece2;
+        tmp = newConstPiece2;
+        break;
+      }
+    case 3:
+      {
+        tmp -> m_interval.setb(interRoots.geta());
+        Piece* newConstPiece3 = new Piece();
+        newConstPiece3 -> addConstant(level);
+        newConstPiece3 -> m_interval.seta(interRoots.getb());
+        newConstPiece3 -> nxt = tmp -> nxt -> nxt;
+        tmp -> nxt -> nxt = newConstPiece3;
+        tmp = newConstPiece3;
+        break;
+      }
     }
   }
   return(FirstPiece);

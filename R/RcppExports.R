@@ -5,8 +5,8 @@ fpopChallenge <- function(vectData, penalty) {
   .Call(`_fpopChallenge_fpopChallenge`, vectData, penalty)
 }
 
-fpopRunge <- function(vectData, penalty) {
-  .Call(`_fpopChallenge_fpopRunge`, vectData, penalty)
+fpopRunge <- function(vectData, penalty, algoType = 1L) {
+    .Call(`_fpopChallenge_fpopRunge`, vectData, penalty, algoType)
 }
 
 fpopRomano <- function(vectData, penalty) {

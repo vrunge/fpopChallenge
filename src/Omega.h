@@ -20,6 +20,7 @@ class Omega
     double GetGlobalCost() const;
 
     void algo(std::vector< double > vectData);
+    void algo2(std::vector< double > vectData);
 
 
   private:
