@@ -55,7 +55,7 @@ void Omega::algo(std::vector< double > vectData)
     ms[i] = track.getArgminimum();
   }
 
-  globalCost = track.getMinimum();
+  globalCost = track.getMinimum() - penalty;
 
 
   ///backtracking

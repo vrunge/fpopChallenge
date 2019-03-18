@@ -1,8 +1,9 @@
+devtools::install_github("vrunge/fpopChallenge")
 library(fpopChallenge)
 y = c(rnorm(1e5, 3),
       rnorm(1e5, 0),
       rnorm(1e5, 5))
-      
+
 
 y <- c(rep(0, 10),
        rep(1, 10),
