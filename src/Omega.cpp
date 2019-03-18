@@ -74,8 +74,8 @@ void Omega::algo(std::vector< double > vectData)
 
 
 
-//####### algo #######////####### algo #######////####### algo #######//
-//####### algo #######////####### algo #######////####### algo #######//
+//####### algo2 #######////####### algo2 #######////####### algo2 #######//
+//####### algo2 #######////####### algo2 #######////####### algo2 #######//
 
 void Omega::algo2(std::vector< double > vectData)
 {
