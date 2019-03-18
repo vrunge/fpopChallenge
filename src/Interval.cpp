@@ -10,6 +10,9 @@ void Interval::setb(double b){m_b = b;}
 double Interval::geta() const{return(m_a);}
 double Interval::getb() const{return(m_b);}
 
+
+bool Interval::isInside(double x) const {return((m_a <= x) && (x <= m_b));}
+
 void Interval::intersection(Interval const& intervalInterRoots, int& type)
 {
   type = -1;

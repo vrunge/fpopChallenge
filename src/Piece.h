@@ -20,10 +20,14 @@ class Piece
     CostGauss getCost() const;
     CostGauss& getRefCost();
 
-    void addConstant(double myconstant);
-    void addDataPoint(double y, Track& track);
+    void addConstant(double& myconstant);
+    void addDataPoint(double& y, Track& track);
     Piece* cut(double level);
     Piece* cut2(double level);
+    Piece* cut3(double level, double currentArgmin, bool Delta);
+
+
+    Piece* ProcessNxt(Interval& interRoots, double& level, int& type);
 
     void show();
 

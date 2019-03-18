@@ -4,7 +4,7 @@
 #include"Empty.h"
 
 #include"Omega.h"
-#include"fpopgaeta.h"
+//#include"fpopgaeta.h"
 
 using namespace Rcpp;
 using namespace std;
@@ -35,6 +35,7 @@ List fpopRunge(std::vector<double> vectData, double penalty,  int algoType = 1)
   Omega omega = Omega(penalty);
   if(algoType == 1){omega.algo(vectData);}
   if(algoType == 2){omega.algo2(vectData);}
+  if(algoType == 3){omega.algo3(vectData);}
 
   /// RETURN
   List res = List::create(
@@ -55,8 +56,10 @@ List fpopRomano(std::vector<double> vectData, double penalty)
 
   /// RETURN
   List res = List::create(
-    _["changepoints"] = FPOPgaeta(vectData, penalty)
+    //_["changepoints"] = FPOPgaeta(vectData, penalty)
   );
 
   return res;
 }
+
+

@@ -13,6 +13,8 @@ class Interval
     void setb(double b);
     double geta() const;
     double getb() const;
+    bool isInside(double x) const;
+
     void intersection(Interval const& intervalInterRoots, int& type);
 
     void show() const;

@@ -19,9 +19,9 @@ class Omega
     std::vector< double > GetMeans() const;
     double GetGlobalCost() const;
 
-    void algo(std::vector< double > vectData);
-    void algo2(std::vector< double > vectData);
-
+    void algo(std::vector< double >& vectData);
+    void algo2(std::vector< double >& vectData);
+    void algo3(std::vector< double >& vectData);
 
   private:
     double penalty;
