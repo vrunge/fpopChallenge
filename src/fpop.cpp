@@ -4,7 +4,7 @@
 #include"Empty.h"
 
 #include"Omega.h"
-//#include"fpopgaeta.h"
+#include"fpopgaeta.h"
 
 using namespace Rcpp;
 using namespace std;
@@ -56,10 +56,8 @@ List fpopRomano(std::vector<double> vectData, double penalty)
 
   /// RETURN
   List res = List::create(
-    //_["changepoints"] = FPOPgaeta(vectData, penalty)
+    _["changepoints"] = FPOPgaeta(vectData, penalty)
   );
 
   return res;
 }
-
-
